@@ -1,6 +1,9 @@
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
+    keys = {
+      { "\\", "<leader>fe", desc = "Explorer NeoTree (Root Dir)", remap = true },
+    },
     opts = function(_, opts)
       opts.window = opts.window or {}
       opts.window.position = "right"
