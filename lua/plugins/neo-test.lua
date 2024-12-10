@@ -8,44 +8,48 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "marilari88/neotest-vitest",
     },
-    opts = function(_, opts)
-      opts.discovery = {
+    opts = {
+      discovery = {
         enabled = false,
         concurrent = 1,
-      }
-      opts.adapters = {
-        require("neotest-vitest")({
-          vitestCommand = "npx vitest",
-        }),
-      }
-
-      local map = vim.api.nvim_set_keymap
-      local opts = { noremap = true, silent = true, desc = "" }
-
-      map(
-        "n",
+      },
+      adapters = {
+        function()
+          return require("neotest-vitest")({
+            vitestCommand = "npx vitest",
+          })
+        end,
+      },
+    },
+    keys = {
+      {
         "<leader>tf",
         "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>",
-        vim.tbl_extend("force", opts, { desc = "Run file tests" })
-      )
-      map(
-        "n",
+        desc = "Run file tests",
+        noremap = true,
+        silent = true,
+      },
+      {
         "<leader>to",
         "<cmd>lua require('neotest').output.open({ enter = true })<cr>",
-        vim.tbl_extend("force", opts, { desc = "Test output" })
-      )
-      map(
-        "n",
+        desc = "Test output",
+        noremap = true,
+        silent = true,
+      },
+      {
         "<leader>ts",
         "<cmd>lua require('neotest').summary.toggle(); vim.cmd('w')<cr>",
-        vim.tbl_extend("force", opts, { desc = "Test summary" })
-      )
-      map(
-        "n",
+        desc = "Test summary",
+        noremap = true,
+        silent = true,
+      },
+      {
         "<leader>tt",
         "<cmd>lua require('neotest').run.run()<cr>",
-        vim.tbl_extend("force", opts, { desc = "Run nearest test" })
-      )
-    end,
+        desc = "Run nearest test",
+        noremap = true,
+        silent = true,
+      },
+    },
   },
 }
