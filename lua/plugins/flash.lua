@@ -10,9 +10,9 @@ return {
         function()
           require("flash").jump()
         end,
-        desc = "Flash",
+        desc = "flash",
       },
-      { "s", false },
+      { "s", mode = { "n", "o", "x" }, false },
     },
   },
 }
