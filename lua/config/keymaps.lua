@@ -22,3 +22,11 @@ vim.api.nvim_set_keymap(
 vim.keymap.set("n", "s", "<nop>", { noremap = true, silent = true })
 vim.keymap.set("x", "s", "<nop>", { noremap = true, silent = true })
 vim.keymap.set("o", "s", "<nop>", { noremap = true, silent = true })
+
+-- Other keymaps
+vim.api.nvim_set_keymap(
+  "n",
+  "<C-w>",
+  "<cmd>lua vim.api.nvim_buf_delete(0, { force = false })<CR>",
+  { desc = "Close buffer", noremap = true, silent = true }
+)
