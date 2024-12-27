@@ -23,6 +23,15 @@ vim.keymap.set("n", "s", "<nop>", { noremap = true, silent = true })
 vim.keymap.set("x", "s", "<nop>", { noremap = true, silent = true })
 vim.keymap.set("o", "s", "<nop>", { noremap = true, silent = true })
 
+-- Remap LazyVim keymaps
+vim.keymap.del("n", "<leader><leader>")
+vim.keymap.set(
+  "n",
+  "<leader><leader>",
+  "<cmd>FzfLua buffers<CR>",
+  { desc = "Current open buffers", noremap = true, silent = true }
+)
+
 -- Other keymaps
 vim.api.nvim_set_keymap(
   "n",
